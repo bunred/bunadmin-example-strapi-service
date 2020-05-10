@@ -110,3 +110,9 @@ coverage
 exports
 .cache
 build
+
+############################
+# Bunadmin example
+############################
+# for data.db
+!/.tmp
