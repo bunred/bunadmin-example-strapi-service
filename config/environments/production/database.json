@@ -5,7 +5,8 @@
       "connector": "bookshelf",
       "settings": {
         "client": "sqlite",
-        "filename": ".tmp/data.db"
+        "filename": ".tmp/data.db",
+        "warning!!!": "This is only for demo, DO NOT USE db/git like this in production."
       },
       "options": {
         "useNullAsDefault": true
