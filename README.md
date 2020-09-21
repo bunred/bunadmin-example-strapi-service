@@ -4,129 +4,85 @@
 
 A Bunadmin example using Strapi as data resource.
 
-### Demo
-[Online demo](https://strapi-demo.bunadmin.com/)
+### Online demo
+[https://blog.eg.bunadmin.com/](https://strapi-demo.bunadmin.com/)
 
-Username / password: `bunadmin_test`
+Username: `admin`, `reviewer`, `user` **different menu**
 
-### Test in local
+Password: `bunadmin`
+
+### Local test
 
 1.Start Strapi service.
 ```
-cd [your test path]
-git clone https://github.com/bunred/bunadmin-example-strapi.git
+cd [Test folder]
+git clone https://github.com/bunred/bunadmin-example-strapi.git bunadmin-example-strapi-service
+cd bunadmin-example-strapi-service
 yarn
 yarn develop
 ```
 
 2.Start BunAdmin dashboard
 ```
-cd [your test path]
-git clone https://github.com/bunred/bunadmin.git
-cd bunadmin
+cd [Test folder]
+git clone https://github.com/bunred/bunadmin.git bunadmin-example-strapi
+cd bunadmin-example-strapi
 
 yarn
-cp env-example.js env.js
-yarn run dev
+cd packages/bunadmin
+cp e.g./env-*.env env-dev.env
 ```
 
-3.Update **env.js** in bunadmin root path
+3.Use environment variables
+
+Replace the content of `bunadmin/env-dev.env` with the following:
 ```
-DEV: {
-    ...
-    MAIN_URL: "http://localhost:1337",
-    AUTH_URL: "http://localhost:1337",
-}
+# ENV_PATH=/absolute/path/to/env-demo.env yarn dev
+
+# BunAdmin
+NEXT_PUBLIC_SITE_NAME=BunAdmin DEV
+NEXT_PUBLIC_AUTH_PLUGIN=bunadmin-auth-strapi
+NEXT_PUBLIC_MAIN_URL=http://localhost:1337/api/v1
+NEXT_PUBLIC_AUTH_URL=http://localhost:1337
+NEXT_PUBLIC_UPLOAD_URL=http://localhost:1337
+#NEXT_PUBLIC_FILE_PREVIEW_URL=
+NEXT_PUBLIC_SITE_URLS=http://192.168.2.2:51802/api/v1, http://192.168.2.2:51803/api/v1
+NEXT_PUBLIC_I18N_CODE=en
+NEXT_PUBLIC_ON_I18N=true
+NEXT_PUBLIC_ON_SETTING=true
+NEXT_PUBLIC_ON_DOC=true
+NEXT_PUBLIC_ON_MOCK=false
+NEXT_PUBLIC_NOTIFICATION_PLUGIN=bunadmin-plugin-notification
+NEXT_PUBLIC_IGNORED_PLUGINS=bunadmin-plugin-blog, bunadmin-upload-buncms
+NEXT_PUBLIC_PATHS_WITHOUT_LAYOUT=/company/about, /company/contact
+NEXT_PUBLIC_PATHS_WITHOUT_AUTH=/company/about, /company/contact
+NEXT_PUBLIC_OFF_NOTIFICATION_INTERVAL_COUNT=true
+
+# Upload Plugin
+NEXT_PUBLIC_UPLOAD_STRAPI_ROLE=Admin,Reviewer
+
+# Auth Plugin
+NEXT_PUBLIC_AUTH_STRAPI_ROLE=Admin
+
 ```
 
-4.Add Strapi plugins: user, data resource and blog.
+4.Start bunadmin 
 
-copy objects into array (:bunadmin/plugins-info.json)
+**Run in `packages/bunadmin/`**
+```shell script
+ENV_PATH=env-dev.env yarn dev
+```
 
+Open [http://localhost:1911/](http://localhost:1911/)
+
+Login with
+- Username: `admin`, `reviewer`, `user` **different menu**
+- Password: `bunadmin`
+
+## Used plugins:
 
 [strapi-user-auth](https://github.com/bunred/bunadmin-plugin-buncms-strapi-user)
 
 [data-source-strapi](https://github.com/bunred/bunadmin-plugin-data-source-strapi)
 
 [strapi-blog](https://github.com/bunred/bunadmin-plugin-strapi-blog-example)
-
-array objects:
-```
-[
-  {
-    "enable": true,
-    "name": "bunadmin strapi user authentication",
-    "version": "1.0.0-alpha.1",
-    "description": "authentication, user query",
-    "license": "Apache-2.0",
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/bunred/bunadmin-plugin-strapi-user.git"
-    },
-    "keywords": ["user", "auth"],
-    "homepage": "https://github.com/bunred/bunadmin-plugin-strapi-user",
-    "plugin-id": "bunadmin-plugin-strapi-user",
-    "plugin-navigation": "authentication",
-    "plugin-author": "bunred",
-    "plugin-folder": "buncms-user",
-    "plugin-version": "1.0.1",
-    "plugin-bunadmin-version": "1.0.1",
-    "plugin-download": {
-      "type": "git",
-      "url": "https://github.com/bunred/bunadmin-plugin-strapi-user/archive/1.0.1.zip"
-    }
-  },
-  {
-    "enable": true,
-    "name": "bunadmin strapi data resource",
-    "version": "1.0.0-alpha.1",
-    "description": "data resource for Strapi",
-    "license": "Apache-2.0",
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/bunred/bunadmin-plugin-data-source-strapi.git"
-    },
-    "keywords": ["data source", "source"],
-    "homepage": "https://github.com/bunred/bunadmin-plugin-data-source-strapi",
-    "plugin-id": "bunadmin-plugin-data-source-strapi",
-    "plugin-navigation": "data-source",
-    "plugin-author": "bunred",
-    "plugin-folder": "data-source-strapi",
-    "plugin-version": "1.0.1",
-    "plugin-bunadmin-version": "1.0.1",
-    "plugin-download": {
-      "type": "git",
-      "url": "https://github.com/bunred/bunadmin-plugin-data-source-strapi/archive/1.0.0-alpha.1.zip"
-    }
-  },
-  {
-    "enable": true,
-    "name": "bunadmin-plugin-strapi-blog",
-    "version": "1.0.0-alpha.1",
-    "description": "blog example for Strapi",
-    "license": "Apache-2.0",
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/bunred/bunadmin-plugin-strapi-blog.git"
-    },
-    "keywords": ["blog", "strapi"],
-    "homepage": "https://github.com/bunred/bunadmin-plugin-strapi-blog",
-    "plugin-id": "bunadmin-plugin-strapi-blog",
-    "plugin-navigation": "blog",
-    "plugin-author": "bunred",
-    "plugin-folder": "bunadmin-blog",
-    "plugin-version": "1.0.1",
-    "plugin-bunadmin-version": "1.0.1",
-    "plugin-download": {
-      "type": "git",
-      "url": "https://github.com/bunred/bunadmin-plugin-strapi-blog/archive/1.0.1.zip"
-    }
-  }
-]
-```
-go to :bunadmin path and run:
-```
-node plugins-update.js
-```
-
-Done.
