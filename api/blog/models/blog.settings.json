@@ -42,6 +42,17 @@
     "category": {
       "model": "category",
       "via": "blogs"
+    },
+    "albums": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }
