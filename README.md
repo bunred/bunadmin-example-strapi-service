@@ -2,19 +2,24 @@
 [BunAdmin](https://github.com/bunred/bunadmin)
 [Strapi](https://github.com/strapi/strapi)
 
-A Bunadmin example using Strapi as data resource.
+This example includes user authentication, menu control, file upload, relational data operations, etc.
 
-### Online demo
+## Online demo
 [https://blog.eg.bunadmin.com/](https://strapi-demo.bunadmin.com/)
 
-Username: `admin`, `reviewer`, `user` **different menu**
+***It takes less time but cannot be deleted, and the test data will be reset from time to time***
 
-Password: `bunadmin`
+Login with any user below (different menus)
+- Username: `admin`, `reviewer`, `user`
+- Password: `bunadmin`
 
-### Local test
+![Blog Post](https://gblobscdn.gitbook.com/assets%2F-M1ZbjnBaWO_NJOdj8_A%2F-MHlKrSo5A7uYDJDV45k%2F-MHlKxF4-lohTzN3gsiA%2Fblog-post-strapi.png)
 
-1.Start Strapi service.
-```
+## Local test
+***It takes more time, but the data and permissions are completely controlled by you***
+
+1.Start Strapi service
+``` shell
 cd [Test folder]
 git clone https://github.com/bunred/bunadmin-example-strapi.git bunadmin-example-strapi-service
 cd bunadmin-example-strapi-service
@@ -23,7 +28,7 @@ yarn develop
 ```
 
 2.Start BunAdmin dashboard
-```
+``` shell
 cd [Test folder]
 git clone https://github.com/bunred/bunadmin.git bunadmin-example-strapi
 cd bunadmin-example-strapi
@@ -36,7 +41,7 @@ cp e.g./env-*.env env-dev.env
 3.Use environment variables
 
 Replace the content of `bunadmin/env-dev.env` with the following:
-```
+``` shell
 # ENV_PATH=/absolute/path/to/env-demo.env yarn dev
 
 # BunAdmin
@@ -66,7 +71,7 @@ NEXT_PUBLIC_AUTH_STRAPI_ROLE=Admin
 
 ```
 
-4.Start bunadmin 
+4.Start bunadmin
 
 **Run in `packages/bunadmin/`**
 ```shell script
@@ -75,14 +80,16 @@ ENV_PATH=env-dev.env yarn dev
 
 Open [http://localhost:1911/](http://localhost:1911/)
 
-Login with
-- Username: `admin`, `reviewer`, `user` **different menu**
+Login with any user below (different menus)
+- Username: `admin`, `reviewer`, `user`
 - Password: `bunadmin`
 
 ## Used plugins:
 
-[strapi-user-auth](https://github.com/bunred/bunadmin-plugin-buncms-strapi-user)
+[bunadmin-plugin-example-blog](https://github.com/bunred/bunadmin/tree/master/plugins/bunadmin-plugin-example-blog)
 
-[data-source-strapi](https://github.com/bunred/bunadmin-plugin-data-source-strapi)
+[bunadmin-auth-strapi](https://github.com/bunred/bunadmin/tree/master/plugins/bunadmin-auth-strapi)
 
-[strapi-blog](https://github.com/bunred/bunadmin-plugin-strapi-blog-example)
+[bunadmin-upload-strapi](https://github.com/bunred/bunadmin/tree/master/plugins/bunadmin-upload-strapi)
+
+[bunadmin-source-strapi](https://github.com/bunred/bunadmin/tree/master/packages/bunadmin-source-strapi)
