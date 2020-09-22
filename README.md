@@ -40,7 +40,7 @@ cp e.g./env-*.env env-dev.env
 
 3.Use environment variables
 
-Replace the content of `bunadmin/env-dev.env` with the following:
+Replace the content of `env-dev.env` ***(bunadmin-example-strapi/packages/bunadmin/env-dev.env)*** with the following:
 ``` shell
 # ENV_PATH=/absolute/path/to/env-demo.env yarn dev
 
@@ -76,7 +76,7 @@ NEXT_PUBLIC_AUTH_STRAPI_ROLE=Admin
 
 4.Start BunAdmin
 
-**Run in `packages/bunadmin/`**
+Run in `bunadmin` path ***(bunadmin-example-strapi/packages/bunadmin/)***
 ```shell script
 ENV_PATH=env-dev.env yarn dev
 ```
