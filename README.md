@@ -22,8 +22,7 @@ Login with any user below (different menus)
 ``` shell
 cd [Test folder]
 git clone https://github.com/bunred/bunadmin-example-strapi.git bunadmin-example-strapi-service
-cd bunadmin-example-strapi-service
-yarn
+$_ && yarn install
 yarn develop
 ```
 
@@ -31,9 +30,8 @@ yarn develop
 ``` shell
 cd [Test folder]
 git clone https://github.com/bunred/bunadmin.git bunadmin-example-strapi
-cd bunadmin-example-strapi
+$_ && yarn install
 
-yarn install
 cd packages/bunadmin
 cp e.g./env-*.env env-dev.env
 ```
@@ -58,11 +56,11 @@ NEXT_PUBLIC_ON_I18N=true
 NEXT_PUBLIC_ON_SETTING=true
 NEXT_PUBLIC_ON_DOC=true
 NEXT_PUBLIC_ON_MOCK=false
-NEXT_PUBLIC_NOTIFICATION_PLUGIN=bunadmin-plugin-notification
 NEXT_PUBLIC_IGNORED_PLUGINS=bunadmin-upload-buncms, bunadmin-plugin-example-blog2
 NEXT_PUBLIC_PATHS_WITHOUT_LAYOUT=/example/about, /example/*
 NEXT_PUBLIC_PATHS_WITHOUT_AUTH=/docs/*
-NEXT_PUBLIC_OFF_NOTIFICATION_INTERVAL_COUNT=true
+#NEXT_PUBLIC_NOTIFICATION_PLUGIN=
+#NEXT_PUBLIC_ON_NOTIFICATION_INTERVAL_COUNT=true
 
 # BunAdmin Plugins
 
