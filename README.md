@@ -4,19 +4,19 @@
 
 This example includes user authentication, menu control, file upload, relational data operations, etc.
 
+![Blog Post](https://gblobscdn.gitbook.com/assets%2F-M1ZbjnBaWO_NJOdj8_A%2F-MHlKrSo5A7uYDJDV45k%2F-MHlKxF4-lohTzN3gsiA%2Fblog-post-strapi.png)
+
 ## Online demo
 [https://blog.eg.bunadmin.com/](https://strapi-demo.bunadmin.com/)
 
-***It takes less time but cannot be deleted, and the test data will be reset from time to time***
+***It takes less time but has restricted permissions, and the test data will be reset from time to time***
 
 Login with any user below (different menus)
 - Username: `admin`, `reviewer`, `user`
 - Password: `bunadmin`
 
-![Blog Post](https://gblobscdn.gitbook.com/assets%2F-M1ZbjnBaWO_NJOdj8_A%2F-MHlKrSo5A7uYDJDV45k%2F-MHlKxF4-lohTzN3gsiA%2Fblog-post-strapi.png)
-
 ## Local test
-***It takes more time, but the data and permissions are completely controlled by you***
+***It takes more time, but the data and permissions are completely controlled by yourself***
 
 1.Start Strapi service
 ``` shell
@@ -27,13 +27,13 @@ yarn
 yarn develop
 ```
 
-2.Start BunAdmin dashboard
+2.Preset BunAdmin
 ``` shell
 cd [Test folder]
 git clone https://github.com/bunred/bunadmin.git bunadmin-example-strapi
 cd bunadmin-example-strapi
 
-yarn
+yarn install
 cd packages/bunadmin
 cp e.g./env-*.env env-dev.env
 ```
@@ -44,7 +44,8 @@ Replace the content of `bunadmin/env-dev.env` with the following:
 ``` shell
 # ENV_PATH=/absolute/path/to/env-demo.env yarn dev
 
-# BunAdmin
+# BunAdmin Core
+
 NEXT_PUBLIC_SITE_NAME=BunAdmin DEV
 NEXT_PUBLIC_AUTH_PLUGIN=bunadmin-auth-strapi
 NEXT_PUBLIC_MAIN_URL=http://localhost:1337/api/v1
@@ -58,10 +59,12 @@ NEXT_PUBLIC_ON_SETTING=true
 NEXT_PUBLIC_ON_DOC=true
 NEXT_PUBLIC_ON_MOCK=false
 NEXT_PUBLIC_NOTIFICATION_PLUGIN=bunadmin-plugin-notification
-NEXT_PUBLIC_IGNORED_PLUGINS=bunadmin-plugin-blog, bunadmin-upload-buncms
-NEXT_PUBLIC_PATHS_WITHOUT_LAYOUT=/company/about, /company/contact
-NEXT_PUBLIC_PATHS_WITHOUT_AUTH=/company/about, /company/contact
+NEXT_PUBLIC_IGNORED_PLUGINS=bunadmin-upload-buncms, bunadmin-plugin-example-blog2
+NEXT_PUBLIC_PATHS_WITHOUT_LAYOUT=/example/about, /example/*
+NEXT_PUBLIC_PATHS_WITHOUT_AUTH=/docs/*
 NEXT_PUBLIC_OFF_NOTIFICATION_INTERVAL_COUNT=true
+
+# BunAdmin Plugins
 
 # Upload Plugin
 NEXT_PUBLIC_UPLOAD_STRAPI_ROLE=Admin,Reviewer
@@ -71,7 +74,7 @@ NEXT_PUBLIC_AUTH_STRAPI_ROLE=Admin
 
 ```
 
-4.Start bunadmin
+4.Start BunAdmin
 
 **Run in `packages/bunadmin/`**
 ```shell script
@@ -80,9 +83,16 @@ ENV_PATH=env-dev.env yarn dev
 
 Open [http://localhost:1911/](http://localhost:1911/)
 
-Login with any user below (different menus)
+Login with any user below (different menus):
 - Username: `admin`, `reviewer`, `user`
 - Password: `bunadmin`
+
+Strapi super administrator:
+- Dashboard: [`http://localhost:1337/admin/`](http://localhost:1337/admin/)
+- Username: `bunadmin_example_strapi`
+- Password: `bunadmin`
+
+***Due to the security mechanism of Strapi, Strapi dashboard users and front-end users adopt different APIs. Therefore, in this example, the Strapi super administrator cannot login through bunadmin.***
 
 ## Used plugins:
 
